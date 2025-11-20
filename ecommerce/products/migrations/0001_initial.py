@@ -8,8 +8,7 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
@@ -27,7 +26,9 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200)),
                 ('description', models.TextField(blank=True)),
                 ('price', models.DecimalField(decimal_places=2, default=0.0, max_digits=200)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.category')),
+                ('image', models.ImageField(blank=True, null=True, upload_to='products/')),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products', to='products.category')),
             ],
         ),
     ]
